@@ -1,5 +1,5 @@
 # test_hello.py
-from heartbeat.app import app
+from hello.app import app
 
 
 def test_hello():
