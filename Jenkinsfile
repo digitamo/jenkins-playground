@@ -2,7 +2,7 @@ pipeline {
     agent { docker { image 'python:3.7' } }
     options { skipStagesAfterUnstable() }
     environment {
-        HOME=${env.WORKSPACE}
+        HOME="${env.WORKSPACE}"
     }
     stages {
     stage('Build') {
