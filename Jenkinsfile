@@ -1,7 +1,13 @@
 pipeline {
     agent { docker { image 'python:3.7' } }
     stages {
+    stage('Test') {
+            steps {
+                sh 'nosetests --with-xunit'
+            }
+        }
         stage('Build') {
+        // TODO: Do a proper build.
             steps {
                 sh 'echo "Hello World"'
                 sh '''
@@ -11,6 +17,7 @@ pipeline {
             }
         }
         stage('Deploy') {
+        // TODO: Do a proper deployment.
             steps {
                 retry(3) {
                     sh './deploy.sh'
@@ -25,6 +32,7 @@ pipeline {
     post {
         always {
             echo 'This will always run'
+            junit '**/nosetests.xml'
         }
         success {
             echo 'This will run only if successful'
