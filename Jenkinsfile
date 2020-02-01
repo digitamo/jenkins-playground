@@ -1,21 +1,14 @@
 pipeline {
-    agent { docker { image 'python:3.7' } }
+    agent { docker { image 'python:3.7.2' } }
     stages {
-    stage('Test') {
+    stage('Build') {
             steps {
-                sh 'ls -a /home'
                 sh 'pip install --user -r hello/requirements.pip'
-                sh 'nosetests --with-xunit'
             }
         }
-        stage('Build') {
-        // TODO: Do a proper build.
+    stage('Test') {
             steps {
-                sh 'echo "Hello World"'
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
+                sh 'nosetests --with-xunit'
             }
         }
         stage('Deploy') {
