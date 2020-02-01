@@ -3,7 +3,7 @@ pipeline {
     stages {
     stage('Test') {
             steps {
-                sh 'pip install -r hello/requirements.pip'
+                sh 'pip install -r hello/requirements.pip --user'
                 sh 'nosetests --with-xunit'
             }
         }
