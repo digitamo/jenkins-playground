@@ -4,7 +4,7 @@ pipeline {
     stage('Test') {
             steps {
                 sh 'whoami'
-                sh 'pip install -r hello/requirements.pip --user'
+                sh 'pip install --user -r hello/requirements.pip'
                 sh 'nosetests --with-xunit'
             }
         }
