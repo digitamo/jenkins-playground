@@ -3,7 +3,6 @@ pipeline {
     stages {
     stage('Test') {
             steps {
-                sh 'whoami'
                 sh 'pip install --user -r hello/requirements.pip'
                 sh 'nosetests --with-xunit'
             }
