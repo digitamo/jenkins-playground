@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # TODO: Change mock deployment to actual deployment on a free server.
 SUCCESS=$((( RANDOM % 2 )))

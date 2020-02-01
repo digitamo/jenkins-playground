@@ -1,20 +1,25 @@
 pipeline {
-    agent { docker { image 'python:3.7' } }
+    agent {
+        docker {
+                image 'python:3-alpine'
+//                args '-u root:root'
+        }
+    }
     options { skipStagesAfterUnstable() }
     environment {
         HOME="${env.WORKSPACE}"
-        PATH="$HOME/.local/bin/:/usr/local/bin:$PATH"
     }
     stages {
     stage('Build') {
             steps {
-                echo '$PATH'
-                sh 'pip install --user -r hello/requirements.pip'
+                sh 'pip install -r hello/requirements.pip'
             }
         }
     stage('Test') {
             steps {
-                sh 'nosetests --with-xunit'
+//                sh "sleep 5000"
+                sh "${HOME}/.local/bin/nosetests --with-xunit"
+//                sh "nosetests --with-xunit"
             }
         }
         stage('Deploy') {
