@@ -3,6 +3,7 @@ pipeline {
     options { skipStagesAfterUnstable() }
     environment {
         HOME="${env.WORKSPACE}"
+        PATH="$HOME/.local/bin/:/usr/local/bin:$PATH"
     }
     stages {
     stage('Build') {
