@@ -8,7 +8,8 @@ pipeline {
     stages {
     stage('Build') {
             steps {
-               sh 'pip install --user -r hello/requirements.pip'
+                echo '$PATH'
+                sh 'pip install --user -r hello/requirements.pip'
             }
         }
     stage('Test') {
