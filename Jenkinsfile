@@ -1,10 +1,12 @@
 pipeline {
-    agent { docker { image 'python:2.7.17' } }
+    agent { docker { image 'python:3.7' } }
     options { skipStagesAfterUnstable() }
     stages {
     stage('Build') {
             steps {
+             withEnv(["HOME=${env.WORKSPACE}"]) {
                 sh 'pip install --user -r hello/requirements.pip'
+             }
             }
         }
     stage('Test') {
