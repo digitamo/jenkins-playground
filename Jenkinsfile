@@ -2,7 +2,6 @@ pipeline {
     agent {
         docker {
                 image 'python:3-alpine'
-//                args '-u root:root'
         }
     }
     options { skipStagesAfterUnstable() }
@@ -17,9 +16,7 @@ pipeline {
         }
     stage('Test') {
             steps {
-//                sh "sleep 5000"
                 sh "${HOME}/.local/bin/nosetests --with-xunit"
-//                sh "nosetests --with-xunit"
             }
         }
         stage('Deploy') {
