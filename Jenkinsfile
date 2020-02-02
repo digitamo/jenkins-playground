@@ -35,6 +35,7 @@ pipeline {
     post {
         always {
             echo 'This will always run'
+            archiveArtifacts artifacts: '**/nosetests.xml', fingerprint: true
             junit '**/nosetests.xml'
         }
         success {
